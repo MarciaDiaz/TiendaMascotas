@@ -1,0 +1,120 @@
+nav{
+    background-image: url(../img/huellas\ perro.png);
+    color: black;
+    font-size: x-large;
+   
+    
+}
+
+footer{
+    background-image: url(../img/huellas\ perro.png);
+    color: black;
+    font-size: x-large;
+    padding: 50px;
+}
+
+.body{
+    height: 900px;
+   
+    
+}
+
+h1{
+    text-align: center;
+    color: goldenrod;
+    padding: 50px;    
+}
+
+h2{
+    color: black;
+    background-color: goldenrod; 
+    
+    text-align: center;
+}
+
+
+
+.principal {
+ 
+    display: flex;
+   justify-content: center;
+  
+   
+}
+
+
+
+
+
+
+
+
+.agregar{
+  
+    text-align: center;
+}
+
+  
+
+ .nombre-producto{
+   text-align: center;
+   color:gray;
+ }
+
+ .precio{
+   display:block;
+   font-size:20px;
+ }
+
+
+#contenedorPadre{
+
+  display:flex;
+}
+
+.pie{
+   text-align: center;
+}
+
+
+
+
+.redesSociales {
+
+ 
+    
+    text-align: center;
+    padding: 100px;
+    border-left: 50px;  
+
+   
+}
+.redesSociales a {
+
+    
+    padding: 5px;
+    
+}
+
+
+
+
+
+tr th{
+    border:  solid 1px black;
+
+}
+
+.alimento-img{
+
+    height: 200px;
+    width: 50px;
+}
+
+
+.carritoUbi{
+
+    
+    justify-content: end;
+    text-align: end;
+}
