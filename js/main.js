@@ -1,5 +1,5 @@
  
-/*Swal.fire('Bienvendio a la tienda de mascotas')*/
+Swal.fire('Bienvendio a la tienda de mascotas')
 
 
 
