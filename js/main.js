@@ -146,7 +146,7 @@ function carritoNav(arrayCarrito){
     for(producto of arrayCarrito){
         total += producto.subtotal
     }
-    carritoNav.innerHTML = ""
+   
     carritoNav.innerHTML = `<p>Carrito (${arrayCarrito.length})</p>`
 
 }   
@@ -172,30 +172,3 @@ function rellenarCarrito(arrayCarrito){
     }
 }
 
-const eliminarProducto = (e) => {
-    let id = e.target.id
-    let index = carrito.findIndex(producto => producto.id == id)
-    carrito.splice(index)
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    location.reload()
-
-   
-
-}
-
-
-
-rellenarCarrito(carritoJson)
-
-
-
-let botonesEliminar = document.querySelectorAll(".eliminarProducto")
-
-botonesEliminar.forEach(boton => {
-
-    boton.addEventListener("click", eliminarProducto)
-
-
-   
-
-})

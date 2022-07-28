@@ -19,19 +19,32 @@ function rellenarCarrito(arrayCarrito){
     }
 }
 
+
+
+
 const eliminarProducto = (e) => {
+
     let id = e.target.id
     let index = carrito.findIndex(producto => producto.id === id)
     carrito.splice(index, 1)
     localStorage.setItem('carrito', JSON.stringify(carrito))
     location.reload()
 
-    
+    Toastify({
 
-     
+        text: "Producto Eliminado",
+        
+        duration: 3000,
+
+       
+        
+        }).showToast();
+
+    
     
 
 }
+
 
 
 
@@ -45,33 +58,7 @@ botonesEliminar.forEach(boton => {
   
      boton.addEventListener("click", eliminarProducto)
 
-     Swal.fire({
-        
-        text: '¿Desea eliminar?',
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'si'
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                    '¡producto eliminado!',
-                    '',
-                    'success'
-                )
-            }
-        }
-    )
-
-
-     Toastify({
-
-        text: "Producto eliminado",
-        
-        duration: 3000
-        
-        }).showToast();
+    
 
 })
 
