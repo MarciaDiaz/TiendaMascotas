@@ -100,9 +100,17 @@ h2{
 
 
 
-tr th{
-    border:  solid 1px black;
+.table-fondo{
 
+
+    background-color: goldenrod;
+
+}
+
+tr th{
+
+
+    border:  solid 1px black;
 }
 
 .alimento-img{
@@ -118,3 +126,52 @@ tr th{
     justify-content: end;
     text-align: end;
 }
+
+
+
+/*Contacto*/
+
+
+
+.contacto{
+
+    border: solid 2px indianred;
+    
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    
+    
+}
+
+.contacto form{
+
+    border: solid 3px aquamarine;
+    margin-top: 120px;
+    
+}
+
+#form .field{
+
+    border: solid 2px brown;
+    
+   
+}
+
+.field {
+    margin-bottom: 10px;
+    
+  }
+  
+  .field label {
+    display: block;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .field input {
+    display: block;
+    min-width: 250px;
+    line-height: 1.5;
+    font-size: 14px;
+  }

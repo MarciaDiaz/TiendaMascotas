@@ -1,13 +1,7 @@
- 
-Swal.fire('Bienvendio a la tienda de mascotas')
-
-
-
+//API DEL CLIMA
 
 
 let contenedor = document.getElementById("clima");
-
-
 
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&lang=es&units=metric&appid=bc6336b0ada564d846b0f7e31450ace7")
@@ -23,6 +17,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&lang=es&
                                     <span> | Temp Min: ${data.main.temp_min} </span>`
 
 })
+
+
+
+//CARRITO VACIO
+
 
 let carrito = [];
 
@@ -51,20 +50,30 @@ function rellenarPagina(arrayProductos){
         <div class="card" style="width:250px">
             <img class="card-img-top alimento-img" src=${producto.img} alt=${producto.id}>
             <div class="card-body">
-                <h4 class="card-title nombre-producto">${producto.nombre}</h4>
+                <h4 class="card-title">${producto.nombre}</h4>
                 <p class="card-text">$<strong>${producto.precio}</strong></p>
-                
-                <a class="btn btn-outline-secondary anadirAlCarrito">
-                <img height="30" src="./img/carrito+.png" alt="" ></a>
-                
+                <a  class="btn btn-outline-secondary anadirAlCarrito"><img height="30" src="./img/carrito+.png" alt="" >comprar</a>
             </div>
         </div>
         `
         divContainer.appendChild(div)
     }
+
+    
+
 }
 
+
 rellenarPagina(productos)
+
+
+
+
+
+
+
+
+
 
 
 function anadirCarrito(e){
@@ -74,14 +83,16 @@ function anadirCarrito(e){
         carrito = carritoLocalStorage
     }
 
-    let id = e.target.parentNode.parentNode.parentNode.children[0].alt;
-    let index = carrito.findIndex(producto => producto.id === id)
-    let nombre =  e.target.parentNode.parentNode.children[0].textContent;
-    let precio = e.target.parentNode.parentNode.children[1].children[0].innerHTML;
+    let id = e.target.parentNode.parentNode.children[0].alt;
+    let index = carrito.findIndex(producto => producto.id == id)
+    console.log(index)
+
+    let nombre =  e.target.parentNode.children[0].textContent;
+    let precio = e.target.parentNode.children[1].children[0].innerHTML;
     let imagen = e.target.parentNode.parentNode.children[0].src;
     let cantidad = 1;
 
-    if (index === -1){
+    if (index == -1){
         const producto = new ProductoCarrito(nombre, precio, imagen,cantidad, id)
         carrito.push(producto)
     } else{
@@ -92,25 +103,6 @@ function anadirCarrito(e){
     carritoNav(carrito)
     
     localStorage.setItem('carrito', JSON.stringify(carrito))
-/*
-    Swal.fire({
-        title: 'Producto añadido al carrito',
-        text: '¿Desea seguir comprando?',
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Seguir comprando'
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                    '¡Producto añadido al carrito!',
-                    '',
-                    'success'
-                )
-            }
-        }
-    ) */
 
 
     Toastify({
@@ -118,21 +110,23 @@ function anadirCarrito(e){
         text: "Producto añadido",
         
         duration: 3000,
-
+        style: {
+            background: "goldenrod",
+          },
        
         
         }).showToast();
-  
-    
-    
 
 
-
+        
 
 }
 
 
 
+
+
+//anadir al carrito
 
 let botones = document.querySelectorAll(".anadirAlCarrito")
 botones.forEach(boton  =>{
@@ -145,30 +139,12 @@ function carritoNav(arrayCarrito){
     let total = 0;
     for(producto of arrayCarrito){
         total += producto.subtotal
+
+        
+    
+
     }
-   
-    carritoNav.innerHTML = `<p>Carrito (${arrayCarrito.length})</p>`
+    carritoNav.innerHTML = ""
+    carritoNav.innerHTML = `<p><img height="30" src="./img/carrito+.png" alt="" >(${arrayCarrito.length})</p>`
 
 }   
-
-let carritoJson = JSON.parse(localStorage.getItem('carrito'))
-
-let tbody = document.querySelector("#tbody")
-
-function rellenarCarrito(arrayCarrito){
-
-    for(producto of arrayCarrito){
-        let row = document.createElement('tr')
-
-        row.innerHTML = `
-            <td>${producto.nombre}</td> 
-            <td>${producto.precio}</td> 
-            <td>${producto.cantidad}</td> 
-            <td>${producto.subtotal}</td> 
-            <td><button class='btn btn-danger eliminarProducto' id = ${producto.id}>
-            <img height="30" src="./img/tacho2.png" alt="" ></button></td>
-        `
-        tbody.appendChild(row)
-    }
-}
-
