@@ -6,12 +6,12 @@ document.getElementById('form')
 
    btn.value = 'Sending...';
 
-   const serviceID = 'service_sqgtsml';
-   const templateID = 'template_mrj8ssu';
+   const serviceID = 'default_service';
+   const templateID = 'template_t14pr4o';
 
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
-      btn.value = 'Send Email';
+      btn.value = 'Enviando';
       Toastify({
         text: "Mensaje Enviado",
         duration: 2000,
@@ -26,7 +26,7 @@ document.getElementById('form')
         onClick: function(){} 
       }).showToast();
     }, (err) => {
-      btn.value = 'Send Email';
+      btn.value = 'Enviar mensaje';
       Toastify({
         text: "Error al Enviar",
         duration: 2000,
